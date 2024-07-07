@@ -1,4 +1,4 @@
-import {Component, computed, signal, Input, input, EventEmitter, Output} from '@angular/core';
+import {Component, computed, signal, Input, input, EventEmitter, Output, output} from '@angular/core';
 import {DUMMY_USERS} from "../dummy-users";
 
 const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
@@ -18,7 +18,8 @@ export class UserComponent {
   name = input.required<string>();
   id = input.required<string>();
 
-  @Output() select = new EventEmitter();
+  //@Output() select = new EventEmitter();
+  select = output<string>();
 
   //selectedUser = DUMMY_USERS[randomIndex];
   selectedUser = signal(DUMMY_USERS[randomIndex])
@@ -38,7 +39,7 @@ export class UserComponent {
     const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
     //this.selectedUser = DUMMY_USERS[randomIndex];
     this.selectedUser.set(DUMMY_USERS[randomIndex]);
-    this.select.emit(this.id);
+    this.select.emit(this.id());
   }
 
 
