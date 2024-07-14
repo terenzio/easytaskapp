@@ -29,6 +29,11 @@ export class UserComponent {
   //   return 'assets/users/' + this.avatar;
   // }
 
+  // Comuputed is a function that is meant to be used with Signals:
+  // takes a fuction as an argument
+  // returns the computed value which may use a Signal
+  // angular will recomputed when the Signal was updated
+  //
   imagePath = computed(() => {
        return 'assets/users/' + this.avatar();
   })
