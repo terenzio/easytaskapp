@@ -1,5 +1,6 @@
-import {Component, computed, input, output, signal} from '@angular/core';
+import {Component, computed, Input, input, output, signal} from '@angular/core';
 import {DUMMY_USERS} from "../dummy-users";
+import {User} from "./user.model";
 
 const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
@@ -10,11 +11,11 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 //   name: string;
 // }
 
-interface User {
-  id: string;
-  avatar: string;
-  name: string;
-}
+// interface User {
+//   id: string;
+//   avatar: string;
+//   name: string;
+// }
 
 @Component({
   selector: 'app-user',
@@ -32,7 +33,9 @@ export class UserComponent {
   // id = input.required<string>();
 
   user = input.required<User>();
-
+  @Input() selected!: boolean;
+  // selected = input.required<boolean>();
+  // selected: Signal<boolean> = signal(false);  <--- Why doesn't this work??
 
   //@Output() select = new EventEmitter();
   select = output<string>();
